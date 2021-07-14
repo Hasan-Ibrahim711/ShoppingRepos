@@ -1,0 +1,20 @@
+.form-floating {
+  width: 50em;
+  margin-right: auto;
+  margin-left: 36%;
+}
+.form-control,.btn-outline-success {
+  border-radius: 50px;
+}
+.form-control {
+  width: 500px;
+}
+body {
+  margin-top: -5%;
+  margin-left: -30%;
+  margin-right: -30%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:cover;
+  
+}

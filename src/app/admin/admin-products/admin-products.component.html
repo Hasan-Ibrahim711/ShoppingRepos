@@ -1,0 +1,29 @@
+<p>
+    <button routerLink="/admin/product/new" class="btn btn-primary" placement="top" ngbTooltip="Tap to add new product">
+        <fa-icon [icon]="plus" size="2x"></fa-icon>
+    </button>
+</p>
+<!--input type="text" placeholder="Search" #query (keyup)="filter(query.value)" class="form-control"><br/>-->
+<div class="table">
+    <table class="table table-striped" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
+        class="row-border hover">
+        <thead>
+            <tr>
+                <th>Title:</th>
+                <th>Price:</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let p of products">
+                <td>{{ p.payload.val().title }}</td>
+                <td>{{ p.payload.val().price | currency }}</td>
+                <td>
+                    <a [routerLink]="['/admin/product/' + p.key]" placement="top" ngbTooltip="Tap to edit the product">
+                        <fa-icon [icon]="edit"></fa-icon>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

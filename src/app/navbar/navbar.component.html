@@ -1,0 +1,41 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">
+      <img src="assets/logo.png" width="50px" height="50px" class="border-radius=100%"alt="" loading="lazy">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/shopping-card" placement="bottom" ngbTooltip="Tap to show your cart content">
+            <fa-icon [icon]="fashoppingcard" size="2x"></fa-icon>
+            <span class="position-absolute translate-middle badge rounded-pill bg-warning" *ngIf="card$ | async as card">
+              {{ card.getTotalCount }}
+            </span>
+          </a>
+        </li>
+        <li ngbDropdown *ngIf="appUser" class="nav-item dropdown">
+          <a ngbDropdownToggle class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            {{appUser.name}}
+          </a>
+          <ul ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" routerLink="/my/order">My Order</a></li>
+            <ng-container *ngIf="appUser.isAdmin">
+              <li><a class="dropdown-item" routerLink="/admin/orders">Manage Orders</a></li>
+              <li><a class="dropdown-item" routerLink="/admin/products">Manage Products</a></li>
+            </ng-container>
+            <li><a class="dropdown-item" routerLink="/" (click)="signOut()">Sign Out</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ng-container *ngIf="!appUser">
+        <button style="margin-left: 55em;" class="btn btn-outline-success"  routerLink="/signUp">Sign Up</button>&nbsp;&nbsp;
+        <button class="btn btn-outline-success" routerLink="/login">Sign In</button>
+      </ng-container>
+    </div>
+  </div>
+</nav>

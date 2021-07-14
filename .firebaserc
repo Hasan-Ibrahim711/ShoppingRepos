@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "vegshop711"
+  },
+  "targets": {
+    "vegshop711": {
+      "hosting": {
+        "VegShoppingApp": [
+          "vegshop711"
+        ]
+      }
+    }
+  }
+}

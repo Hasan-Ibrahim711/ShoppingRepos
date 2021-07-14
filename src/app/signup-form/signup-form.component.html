@@ -1,0 +1,17 @@
+<body>
+    <h2 class="text-center">Veg&Fruits Shop</h2>
+<div class="card" style="width: 22rem;height: 25rem; background-color: #CCFFFF;margin-left: 40%">
+    <div class="card-body">
+    <form #f="ngForm">
+        <label for="email" >Email:</label><br/>
+        <input id="email" type="text"  #email placeholder="Enter your email here" class="form-control"><br/>
+        <label id="password" for="">Password:</label><br/>
+        <input id="password" type="password" placeholder="Password" #password class="form-control"><br/><br/>
+        <p style="text-align: center;">By clicking Agree & Join, you agree to the  User Agreement,Privacy Policy, and Cookie Policy.</p>
+        <div class="d-grid gap-2">
+          <button class="btn btn-outline-info" [disabled]="!f.valid" (click)="signUp(email.value,password.value)">Sign Up</button>
+        </div>
+    </form>
+    </div>
+  </div>
+</body>
