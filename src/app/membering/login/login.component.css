@@ -9,12 +9,16 @@
 .form-control {
   width: 500px;
 }
-body {
+.text-center {
   margin-top: -5%;
   margin-left: -30%;
   margin-right: -30%;
   background-repeat: no-repeat;
   background-position: center;
   background-size:cover;
+  height: 100rem;
   
+}
+.alert-danger {
+  border-radius: 50px;
 }

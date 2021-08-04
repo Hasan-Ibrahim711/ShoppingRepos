@@ -14,6 +14,6 @@ export class MyOrderComponent  {
   constructor(
     private authService: AuthService,
     private orderService: OrderService) { 
-    this.orders$=authService.user$?.pipe(switchMap ((u:any) => orderService.getOrdersByUser(u.uid)));
+    this.orders$=this.authService.user$?.pipe(switchMap ((u:any) => orderService.getOrdersByUser(u.uid)));
   }
 }

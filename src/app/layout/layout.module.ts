@@ -21,7 +21,7 @@ import { ProductsComponent } from './components/products/products.component';
   imports: [
     CommonModule,
     SharedModule,
-    RoutingModule
+    RoutingModule,
   ],
   exports: [
     NavbarComponent,

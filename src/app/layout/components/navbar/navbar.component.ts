@@ -3,9 +3,10 @@ import { ShoppingCardService } from 'shared/services/shopping-card.service';
 import { UserService } from 'shared/services/user.service';
 import { AppUser } from 'shared/models/appuser';
 import { AuthService } from 'shared/services/auth.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output,EventEmitter } from '@angular/core';
 import { shoppingCard } from 'shared/models/shoppingCard';
-import { faShoppingCart, faHome} from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart, faHome, faMoon, faSun} from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'navbar',
   templateUrl: './navbar.component.html',
@@ -17,7 +18,13 @@ export class NavbarComponent implements OnInit {
   card$?:Observable<shoppingCard>;
   shoppingcardIcon = faShoppingCart;
   homeIcon=faHome;
-  constructor(public auth: AuthService,public userAuth: UserService,private cardservice: ShoppingCardService) {
+  bedtime=faMoon;
+  suntime=faSun;
+  _darkMode=false;
+  @Output('darkMode') darkMode=new EventEmitter<boolean>();
+  constructor(public auth: AuthService,
+    public userAuth: UserService,
+    private cardservice: ShoppingCardService) {
     this.userAuth.AppUser$?.subscribe(appuser=> this.appUser=appuser)
    }
 
@@ -27,5 +34,9 @@ export class NavbarComponent implements OnInit {
 
   signOut() {
     this.auth.SignOut()
+  }
+  changeTheme() {
+    this._darkMode=!this._darkMode;
+    this.darkMode.emit(this._darkMode);
   }
 }

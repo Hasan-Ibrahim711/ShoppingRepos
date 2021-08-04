@@ -1,4 +1,6 @@
-<navbar></navbar>
+<div style="height: 100rem; width: 100%;" [ngClass]="darkMode? 'dark-theme' : 'light-theme' ">
+<navbar (darkMode)="changeTheme($event)"></navbar>
 <div class="container">
-    <router-outlet></router-outlet>
+  <router-outlet></router-outlet>
+</div>
 </div>

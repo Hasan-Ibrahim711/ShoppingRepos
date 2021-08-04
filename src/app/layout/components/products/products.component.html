@@ -3,13 +3,15 @@
         <products-filter [category]="category"></products-filter>
     </div>
     <div class="col">
-        <div class="row">
-            <ng-container *ngFor="let p of filterproducts; let i=index">
-                <div class="col">
-                    <product-card [product]="p" [shoppingCard]="card"></product-card>
-                </div>
-                <div *ngIf="(i + 1) % 2 == 0" class="w-100"></div>
-            </ng-container>
-        </div>
+        <cdk-virtual-scroll-viewport style="height: 500px;" itemSize="50" >
+            <div class="row">
+                <ng-container *cdkVirtualFor="let p of filterproducts; let i=index">
+                    <div class="col animated slideInRight">
+                        <product-card [product]="p" [shoppingCard]="card"></product-card>
+                    </div>
+                    <div *ngIf="(i + 1) % 2 == 0" class="w-100"></div>
+                </ng-container>
+            </div>
+        </cdk-virtual-scroll-viewport>
     </div>
 </div>

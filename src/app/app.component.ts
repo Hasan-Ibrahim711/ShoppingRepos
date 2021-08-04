@@ -1,3 +1,4 @@
+import { NavbarComponent } from './layout/components/navbar/navbar.component';
 import { UserService } from './shared/services/user.service';
 import { AuthService } from './shared/services/auth.service';
 import { Component } from '@angular/core';
@@ -10,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'VegShoppingApp';
+  darkMode=false;
 
   constructor(private userServ: UserService,private auth: AuthService, private router: Router) {
     auth.user$.subscribe(user => {
@@ -19,5 +21,12 @@ export class AppComponent {
         this.router.navigateByUrl(returnUrl)
       }
     })
+  }
+
+  changeTheme(event:boolean) {
+    if(event)
+      this.darkMode=true;
+    else
+      this.darkMode=false;
   }
 }

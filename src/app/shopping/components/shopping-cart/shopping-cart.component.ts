@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ShoppingCardService } from 'shared/services/shopping-card.service';
 import { Component, OnInit } from '@angular/core';
@@ -10,7 +11,7 @@ import { shoppingCard } from 'shared/models/shoppingCard';
 })
 export class ShoppingCardComponent implements OnInit {
   card$?: Observable<shoppingCard>;
-  constructor(public cardservice: ShoppingCardService) { }
+  constructor(public cardservice: ShoppingCardService,private route:Router) { }
 
   async ngOnInit() {
     this.card$=await this.cardservice.getCard();

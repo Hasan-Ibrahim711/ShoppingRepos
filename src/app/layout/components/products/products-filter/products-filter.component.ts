@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ProductsFilterComponent implements OnInit {
   @Input('category') category: any;
+  catColor="orangered";
   categories$?:any;
   constructor(private categoryservice: CategoryService) {
     this.categories$=this.categoryservice.getCategory();

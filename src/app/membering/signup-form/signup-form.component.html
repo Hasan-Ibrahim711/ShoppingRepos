@@ -1,17 +1,31 @@
-<body>
-    <h2 class="text-center">Veg&Fruits Shop</h2>
-<div class="card" style="width: 22rem;height: 25rem; background-color: #CCFFFF;margin-left: 40%">
+<div class="full-screen">
+  <h2 class="text-center">Veg&Fruits Shop</h2>
+  <div class="card" style="width: 22rem;height: 33rem; background-color: #CCFFFF;margin-left: 40%">
     <div class="card-body">
-    <form #f="ngForm">
-        <label for="email" >Email:</label><br/>
-        <input id="email" type="text"  #email placeholder="Enter your email here" class="form-control"><br/>
-        <label id="password" for="">Password:</label><br/>
-        <input id="password" type="password" placeholder="Password" #password class="form-control"><br/><br/>
-        <p style="text-align: center;">By clicking Agree & Join, you agree to the  User Agreement,Privacy Policy, and Cookie Policy.</p>
-        <div class="d-grid gap-2">
-          <button class="btn btn-outline-info" [disabled]="!f.valid" (click)="signUp(email.value,password.value)">Sign Up</button>
+      <form [formGroup]="form">
+        <label for="email">Email:</label><br />
+        <input id="email" formControlName="email" type="text" #_email placeholder="Enter your email here"
+          class="form-control">
+        <div *ngIf="email?.touched && email?.invalid" class="alert alert-danger">
+          <div *ngIf="email?.errors?.required">Email is required</div>
+          <div *ngIf="email?.errors?.email">Please type an valid email</div>
         </div>
-    </form>
+        <br />
+        <label id="password" for="">Password:</label><br />
+        <input id="password" type="password" placeholder="password" #_password formControlName="password"
+          class="form-control">
+        <div *ngIf="password?.touched && password?.invalid" class="alert alert-danger">
+          <div *ngIf="password?.errors?.required">password is required</div>
+          <div *ngIf="password?.errors?.minlength">Password should be at least 6 digits</div>
+        </div>
+        <br /><br /><br />
+        <p style="text-align: center;">By clicking Agree & Join, you agree to the User Agreement,Privacy Policy, and
+          Cookie Policy.</p>
+        <div class="d-grid gap-2">
+          <button class="btn btn-outline-info" [disabled]="form.invalid"
+            (click)="signUp(_email.value,_password.value)">Sign Up</button>
+        </div>
+      </form>
     </div>
   </div>
-</body>
+</div>

@@ -1,13 +1,14 @@
-import { ShoppingModule } from './../shopping/shopping.module';
-import { RoutingModule } from './../routing/routing.module';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
-import { AdminModule } from 'app/admin/admin.module';
-import { MemberingModule } from 'app/membering/membering.module';
+import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { NbThemeModule, NbLayoutModule, NbIconModule } from '@nebular/theme';
+import { AppRoutingModule } from 'app/app-routing.module';
 import { environment } from 'environments/environment';
 
 import { LayoutModule } from './../layout/layout.module';
+import { RoutingModule } from './../routing/routing.module';
 import { SharedModule } from './../shared/shared.module';
+
 
 
 
@@ -18,12 +19,14 @@ import { SharedModule } from './../shared/shared.module';
     SharedModule,
     LayoutModule,
     RoutingModule,
+    AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
   ],
   exports:[
     SharedModule,
     LayoutModule,
-    RoutingModule
+    RoutingModule,
+    AppRoutingModule,
   ]
 })
 export class CoreModule { }

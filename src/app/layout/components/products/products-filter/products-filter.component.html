@@ -5,7 +5,7 @@
         </a>
         <a *ngFor="let cat of categories$ | async" class="list-group-item list-group-item-action" routerLink="/"
             [queryParams]="{category: cat.key}" [class.acive]="category == cat.key">
-            {{ cat.key }}
+           <span [appTextColor]="catColor">{{ cat.key }}</span> 
         </a>
     </div>
 </div>
